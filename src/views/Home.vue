@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <!--     <div v-for="event in events">
+    <!-- <div v-for="event in events">
       <ul>
         <li>
           <img
