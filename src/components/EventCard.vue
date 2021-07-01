@@ -12,11 +12,13 @@
           <li class="list-group-item">{{ event.date_time }}</li>
         </ul>
         <ul class="list-group list-group-flush">
-          
-            <button role="button" class="btn btn-outline-primary btn-sm">
-              Show
-            </button>
-          
+          <button
+            @click="showInscribers(event.id)"
+            role="button"
+            class="btn btn-outline-primary btn-sm"
+          >
+            Show
+          </button>
         </ul>
       </div>
     </div>
@@ -35,6 +37,13 @@ export default {
     return {
       events: [],
     };
+  },
+  methods:{
+    showInscribers(id){
+      this.$emit('myEvent', id)
+      
+      
+    }
   },
   mounted() {
     axios.get("http://127.0.0.1:8000/api/events").then((response) => {

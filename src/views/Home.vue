@@ -3,8 +3,10 @@
     <h1>Card de los Eventos</h1>
     <br />
 
-    <EventCard/>
-    <Subscribers/>
+    <EventCard @myEvent="alertTest"/>
+   
+    <Subscribers />
+   
 
     <br />
   </div>
@@ -29,6 +31,10 @@ export default {
     },
     clickShow(id) {
       <router-link to="/Show/id"> </router-link>;
+    },
+    alertTest(id){
+      alert (id)
+
     },
   },
 };

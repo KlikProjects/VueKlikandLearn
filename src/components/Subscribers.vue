@@ -28,7 +28,7 @@ export default {
   },
   mounted() {
     axios
-      .get(`http://127.0.0.1:8000/api/events/1/subscribers`)
+      .get("http://127.0.0.1:8000/api/events/1/subscribers")
       .then((response) => {
         this.users = response.data;
       });
