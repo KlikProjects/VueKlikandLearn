@@ -1,5 +1,5 @@
 <template>
-  <div class="cardContainer">
+  <div v-show="isNinja" id="asd" class="cardContainer">
     <div v-for="event in events" v-bind:key="event">
       <div class="card" style="width: 18rem;">
         <img :src="event.image" class="card-img-top" alt="..." />
@@ -13,7 +13,7 @@
         </ul>
         <ul class="list-group list-group-flush">
           
-            <button role="button" class="btn btn-outline-primary btn-sm">
+            <button v-on:click="isNinja = !isNinja" role="button" class="btn btn-outline-primary btn-sm">
               Show
             </button>
           
@@ -25,12 +25,17 @@
 
 <script>
 import axios from "axios";
+import Vue from 'vue';
+
+var ninjaa = new Vue ({
+  el: '#asd',
+  data: {
+    isNinja: false
+  }
+});
 
 export default {
   name: "EventCard",
-  /*  props: {
-    events: Object,
-  }, */
   data() {
     return {
       events: [],

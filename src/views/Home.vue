@@ -3,8 +3,8 @@
     <h1>Card de los Eventos</h1>
     <br />
 
-    <EventCard/>
-    <Subscribers/>
+    <component v-bind:is="component"></component>
+    <!-- <Subscribers/> -->
 
     <br />
   </div>
@@ -15,13 +15,19 @@
 import HelloWorld from "@/components/HelloWorld.vue";
 import EventCard from "@/components/EventCard.vue";
 import Subscribers from '../components/Subscribers.vue';
+import Vue from 'vue';
 
-export default {
+export default{
   name: "Home",
   components: {
     HelloWorld,
     EventCard,
     Subscribers,
+  },
+  data() {
+    return {
+      component: 'EventCard'
+    }
   },
   methods: {
     changetext() {
