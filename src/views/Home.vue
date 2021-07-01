@@ -5,7 +5,7 @@
 
     <EventCard/>
     <Subscribers/>
-    
+
     <br />
   </div>
 </template>
@@ -23,11 +23,6 @@ export default {
     EventCard,
     Subscribers,
   },
-/*   data() {
-    return {
-      events: [],
-    };
-  }, */
   methods: {
     changetext() {
       this.text = "Hola coders despues de click";
@@ -36,10 +31,5 @@ export default {
       <router-link to="/Show/id"> </router-link>;
     },
   },
- /*  mounted() {
-    axios.get("http://127.0.0.1:8000/api/events").then((response) => {
-      this.events = response.data;
-    });
-  }, */
 };
 </script>
