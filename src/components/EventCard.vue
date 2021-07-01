@@ -1,31 +1,45 @@
 <template>
-  <div class="card" style="width: 18rem;">
-    <img :src="image" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h5 class="card-title">{{ title }}</h5>
-      <p class="card-text">{{ description }}</p>
+  <div class="cardContainer">
+    <div v-for="event in events" v-bind:key="event">
+      <div class="card" style="width: 18rem;">
+        <img :src="event.image" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{ event.title }}</h5>
+          <h5 class="card-title">id : {{ event.id }}</h5>
+          <p class="card-text">{{ event.description }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{ event.date_time }}</li>
+        </ul>
+        <ul class="list-group list-group-flush">
+          
+            <button role="button" class="btn btn-outline-primary btn-sm">
+              Show
+            </button>
+          
+        </ul>
+      </div>
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">{{ date_time }}</li>
-    </ul>
-    <ul class="list-group list-group-flush">
-      <router-link to="/Show">
-        <button role="button" class="btn btn-outline-primary btn-sm">
-          Show
-        </button>
-      </router-link>
-    </ul>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "EventCard",
-  props: {
-    title: String,
-    description: String,
-    date_time: String,
-    image: String,
+  /*  props: {
+    events: Object,
+  }, */
+  data() {
+    return {
+      events: [],
+    };
+  },
+  mounted() {
+    axios.get("http://127.0.0.1:8000/api/events").then((response) => {
+      this.events = response.data;
+    });
   },
 };
 </script>

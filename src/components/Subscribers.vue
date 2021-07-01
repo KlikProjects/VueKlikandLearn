@@ -1,5 +1,5 @@
 <template>
-  <div class="show">
+  <div class="Subscribers">
     <h1>Inscrito a este Evento</h1>
     <br />
 
@@ -14,24 +14,17 @@
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
 import axios from "axios";
 
 export default {
-  name: "Home",
-  components: {
-    HelloWorld,
+  name: "Subscribers",
+  props: {
+    id: Number,
   },
   data() {
     return {
       users: [],
     };
-  },
-  methods: {
-    changetext() {
-      this.text = "Hola coders despues de click";
-    },
   },
   mounted() {
     axios
@@ -42,3 +35,11 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.cardContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+</style>
