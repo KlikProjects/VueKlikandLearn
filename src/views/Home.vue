@@ -12,14 +12,13 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+
 import EventCard from "@/components/EventCard.vue";
 import Subscribers from "../components/Subscribers.vue";
 
 export default {
   name: "Home",
   components: {
-    HelloWorld,
     EventCard,
     Subscribers,
   },
@@ -29,12 +28,6 @@ export default {
     }
   },
   methods: {
-    changetext() {
-      this.text = "Hola coders despues de click";
-    },
-    clickShow(id) {
-      <router-link to="/Show/id"> </router-link>;
-    },
     showSubscribers(id) {
       let getCardList = document.querySelector('.cardContainer');
       getCardList.classList.add('hidden');

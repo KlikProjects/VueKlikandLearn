@@ -14,7 +14,7 @@ import axios from 'axios';
 import EventCard from '@/components/EventCard.vue';
 import Home from '@/views/Home.vue';
 
-console.log(Home.data().events);
+/* console.log(Home.data().events); */
 
 export default {
   name: "Subscribers",
