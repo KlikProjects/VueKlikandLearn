@@ -1,7 +1,7 @@
 <template>
   <div class="cardContainer">
     <div v-for="event in events" v-bind:key="event">
-      <div class="card" style="width: 18rem;">
+      <div class="card">
         <img :src="event.image" class="card-img-top" alt="..." />
         <div class="card-body">
           <h5 class="card-title">{{ event.title }}</h5>
@@ -53,13 +53,15 @@ export default {
 .cardContainer {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .card{
   width: 18rem;
-  height: 30rem;
+  height: 35rem;
   background-color: #343F55;
+  margin-bottom: 20px;
+  
 }
 
 .card-img-top.img{
