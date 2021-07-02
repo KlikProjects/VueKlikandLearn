@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>Card de los Eventos</h1>
+    <h1 class="titlePage">Card de los Eventos</h1>
     <br />
 
     <EventCard @myEvent="showSubscribers" />
