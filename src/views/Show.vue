@@ -1,12 +1,12 @@
 <template>
-  <div class="show">
-    <h1>Inscrito a este Evento</h1>
+  <div class="show" id="app">
+    <h1 class="titlePage">Inscrito a este Evento</h1>
     <br />
 
     
       <div v-for="user in users">
         
-          <div>{{ user.name }}</div>
+          <div class="userName">{{ user.name }}</div>
         
       </div>
     
@@ -35,7 +35,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://127.0.0.1:8000/api/events/1/subscribers")
+      .get("http://127.0.0.1:8000/api/events/2/subscribers")
       .then((response) => {
         this.users = response.data;
       });
