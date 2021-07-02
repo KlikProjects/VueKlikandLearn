@@ -3,9 +3,9 @@
     <h1>Card de los Eventos</h1>
     <br />
 
-    <component v-bind:is="component"></component>
-    <!-- <Subscribers/> -->
-
+    <EventCard @myEvent="showSubscribers" />
+    <Subscribers :id="eventId" />
+    
     <br />
   </div>
 </template>
@@ -14,10 +14,9 @@
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
 import EventCard from "@/components/EventCard.vue";
-import Subscribers from '../components/Subscribers.vue';
-import Vue from 'vue';
+import Subscribers from "../components/Subscribers.vue";
 
-export default{
+export default {
   name: "Home",
   components: {
     HelloWorld,
@@ -26,7 +25,7 @@ export default{
   },
   data() {
     return {
-      component: 'EventCard'
+      eventId: null
     }
   },
   methods: {
@@ -36,6 +35,23 @@ export default{
     clickShow(id) {
       <router-link to="/Show/id"> </router-link>;
     },
+    showSubscribers(id) {
+      let getCardList = document.querySelector('.cardContainer');
+      getCardList.classList.add('hidden');
+
+      let getSubscribersList = document.querySelector('.subscribers');
+      getSubscribersList.classList.remove('hidden');
+
+      return this.eventId = id;
+    },
   },
 };
 </script>
+
+<style lang="scss">
+
+.hidden {
+  display: none;
+}
+
+</style>

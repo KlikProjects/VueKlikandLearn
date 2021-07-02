@@ -1,5 +1,5 @@
 <template>
-  <div v-show="isNinja" id="asd" class="cardContainer">
+  <div class="cardContainer">
     <div v-for="event in events" v-bind:key="event">
       <div class="card" style="width: 18rem;">
         <img :src="event.image" class="card-img-top" alt="..." />
@@ -12,11 +12,13 @@
           <li class="list-group-item">{{ event.date_time }}</li>
         </ul>
         <ul class="list-group list-group-flush">
-          
-            <button v-on:click="isNinja = !isNinja" role="button" class="btn btn-outline-primary btn-sm">
-              Show
-            </button>
-          
+          <button
+            @click="showInscribers(event.id)"
+            role="button"
+            class="btn btn-outline-primary btn-sm"
+          >
+            Show
+          </button>
         </ul>
       </div>
     </div>
@@ -24,15 +26,8 @@
 </template>
 
 <script>
-import axios from "axios";
-import Vue from 'vue';
 
-var ninjaa = new Vue ({
-  el: '#asd',
-  data: {
-    isNinja: false
-  }
-});
+import axios from "axios";
 
 export default {
   name: "EventCard",
@@ -40,6 +35,11 @@ export default {
     return {
       events: [],
     };
+  },
+  methods:{
+    showInscribers(id){
+      this.$emit('myEvent', id)
+    }
   },
   mounted() {
     axios.get("http://127.0.0.1:8000/api/events").then((response) => {
