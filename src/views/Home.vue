@@ -2,46 +2,56 @@
   <div class="home">
     <h1>Card de los Eventos</h1>
     <br />
-    <div class="cardContainer">
-      <div v-for="event in events">
-        <EventCard
-          v-bind:title="event.title"
-          v-bind:description="event.description"
-          v-bind:date_time="event.date_time"
-          v-bind:image="event.image"
-        />
-        <br />
-      </div>
-    </div>
+
+    <EventCard @myEvent="showSubscribers" />
+    <Subscribers :id="eventId" />
+    
+    <br />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
-import axios from "axios";
 import EventCard from "@/components/EventCard.vue";
+import Subscribers from "../components/Subscribers.vue";
 
 export default {
   name: "Home",
   components: {
     HelloWorld,
     EventCard,
+    Subscribers,
   },
   data() {
     return {
-      events: [],
-    };
+      eventId: null
+    }
   },
   methods: {
     changetext() {
       this.text = "Hola coders despues de click";
     },
-  },
-  mounted() {
-    axios.get("http://127.0.0.1:8000/api/events").then((response) => {
-      this.events = response.data;
-    });
+    clickShow(id) {
+      <router-link to="/Show/id"> </router-link>;
+    },
+    showSubscribers(id) {
+      let getCardList = document.querySelector('.cardContainer');
+      getCardList.classList.add('hidden');
+
+      let getSubscribersList = document.querySelector('.subscribers');
+      getSubscribersList.classList.remove('hidden');
+
+      return this.eventId = id;
+    },
   },
 };
 </script>
+
+<style lang="scss">
+
+.hidden {
+  display: none;
+}
+
+</style>
